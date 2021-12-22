@@ -4,10 +4,9 @@ Voxel Tracker
 Voxel Tracker is a tool for viewing locality specific trends in
 COVID-19 case data. This tools runs inside of Minetest, an open
 source voxel game engine. To install Voxel Tracker, you must first
-install Minetest which can be downloaded here https://www.minetest.net/.
+install Minetest which can be downloaded here: <a href="https://www.minetest.net/">https://www.minetest.net/</a>.
 Then, you can clone this repository in the Minetest games directory.
-See here https://wiki.minetest.net/Games#Installing_games for more
-information about the installation of games within the Minetest engine.
+More information is available here: <a href="https://wiki.minetest.net/Games#Installing_games">'Installing games in Minetest'</a>
 
 In order to run Voxel Tracker, you will need to add the mod to your
 trusted mods list. To do so, click on the 'Settings' tab in the main menu. 
