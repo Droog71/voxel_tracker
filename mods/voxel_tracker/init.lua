@@ -22,7 +22,14 @@ end)
  
  --initializes the player and builds a platform
  minetest.register_on_joinplayer(function(player)
-    player:set_sky(000000, "plain", {})
+    player:set_properties({
+        textures = { "blank.png", "blank.png" },
+        visual = "upright_sprite",
+        visual_size = { x = 1, y = 2 },
+        collisionbox = {-0.49, 0, -0.49, 0.49, 2, 0.49 },
+        initial_sprite_basepos = {x = 0, y = 0}
+    })
+    player:set_sky({ type = "plain", base_color = 000000 })
     player:hud_set_flags({hotbar = false, healthbar = false, crosshair = false})
     minetest.set_player_privs(player:get_player_name(), {fly=true})
     player:set_clouds({density = 0})
