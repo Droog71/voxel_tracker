@@ -51,18 +51,13 @@ function plot_data(data_json)
     local size = get_size(data_json.counties)
     x = x - (21 - ((size - 1) * 7))
     
-    for k1,v1 in pairs(data_json.counties) do
-        local county_name = ""
-        for k2,v2 in pairs(v1) do
-            if k2 == "countyName" then
-                county_name = v2
-            elseif k2 == "historicData" then
-                for k3,v3 in pairs(v2) do
-                    local current_day = tonumber(k3)
-                    if current_day < 6 then
-                        plot_day(current_day, v2, v3, x, county_name)
-                        x = x - 2
-                    end
+    for _,county in pairs(data_json.counties) do
+        if county.countyName ~= nil and county.countyName ~= "" then
+            for index,data in pairs(county.historicData) do
+                local current_day = tonumber(index)
+                if current_day < 6 then
+                    plot_day(current_day, county.historicData, data, x, county.countyName)
+                    x = x - 2
                 end
             end
         end
@@ -85,18 +80,18 @@ function plot_data(data_json)
 end
 
 --creates a single bar on the graph
-function plot_day(current_day, days, data, x, county_name)
+function plot_day(current_day, all_data, data, x, county_name)
     local past_change = 0
     local org_data = 0
-    local past_data = days[current_day + 1].positiveCt
+    local past_data = all_data[current_day + 1].positiveCt
     if current_day <= 4 then
-        org_data =  days[current_day + 2].positiveCt
+        org_data =  all_data[current_day + 2].positiveCt
         past_change = past_data - org_data
     end
     local change = data.positiveCt - past_data
     local increase = change > past_change
     add_hud_message(county_name .. ", " .. data.date .. " : " .. change .. " cases")
-    change = scale_change(days, change)
+    change = scale_change(all_data, change)
     if change == 0 then change = 1 end
     for y = 1,change,1 do
         local node_pos = vector.new(x, y, 0)
