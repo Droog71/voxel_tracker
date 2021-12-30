@@ -29,6 +29,9 @@ end)
         collisionbox = {-0.49, 0, -0.49, 0.49, 2, 0.49 },
         initial_sprite_basepos = {x = 0, y = 0}
     })
+    player:set_sun({visible = false, sunrise_visible = false})
+    player:set_moon({visible = false})
+    player:set_stars({visible = false})
     player:set_sky({ type = "plain", base_color = 000000 })
     player:hud_set_flags({hotbar = false, healthbar = false, crosshair = false})
     minetest.set_player_privs(player:get_player_name(), {fly=true})
