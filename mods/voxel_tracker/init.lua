@@ -40,6 +40,16 @@ end)
     player:set_pos(vector.new(0, 25, -40))
 end)
 
+--clears the area on exit
+minetest.register_on_shutdown(function()
+    for x = -24,24,1 do
+        for y = 1,50,1 do
+            local node_pos = vector.new(x, y, 0)
+            minetest.remove_node(node_pos)
+        end
+    end
+end)
+
 --keeps time of day at 0.5
 minetest.register_globalstep(function(dtime)  
     minetest.set_timeofday(0.5)
