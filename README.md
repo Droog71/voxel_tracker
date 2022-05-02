@@ -1,7 +1,9 @@
 # NOTICE
+<pre>
 The API used to create this tool is no longer available.
 Attempting to use the tool will simply result in failed http requests and error messages.
 I do not plan on fixing this problem or updating this project.
+</pre>
 
 Voxel Tracker
 =============
